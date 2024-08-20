@@ -20,7 +20,7 @@ class Game:
             # update
 
             # draw
-            pygame.display.update()
+            pygame.display.flip()
 
         pygame.quit()
 
