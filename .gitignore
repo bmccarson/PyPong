@@ -1,0 +1,6 @@
+# Directories
+code/__pycache__
+pongEnv
+
+# Files
+.DS_Store
