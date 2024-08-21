@@ -1,4 +1,5 @@
 from settings import *
+from player import Player
 
 class Game:
     def __init__(self):
@@ -7,6 +8,12 @@ class Game:
         pygame.display.set_caption('Pong')
         self.clock = pygame.time.Clock()
         self.running = True
+
+        # groups
+        self.all_sprites = pygame.sprite.Group()
+
+        # sprites
+        self.player = Player((30, WINDOW_HEIGHT / 2), self.all_sprites)
     
     def run(self):
         while self.running:
@@ -17,9 +24,13 @@ class Game:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.running = False
+
             # update
+            self.all_sprites.update(dt)
 
             # draw
+            self.display_surface.fill('black')
+            self.all_sprites.draw(self.display_surface)
             pygame.display.flip()
 
         pygame.quit()
