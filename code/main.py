@@ -29,7 +29,7 @@ class Game:
             self.all_sprites.update(dt)
 
             # draw
-            self.display_surface.fill('black')
+            self.display_surface.blit(BG, (0,0))
             self.all_sprites.draw(self.display_surface)
             pygame.display.flip()
 
