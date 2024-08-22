@@ -8,7 +8,7 @@ class Player(pygame.sprite.Sprite):
 
         # movement
         self.direction = pygame.Vector2()
-        self.speed = 500
+        self.speed = SPEED['player'] 
     
     def input(self):
         keys = pygame.key.get_pressed()
