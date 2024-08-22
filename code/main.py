@@ -13,6 +13,8 @@ class Game:
         self.all_sprites = pygame.sprite.Group()
 
         # sprites
+        self.BG = pygame.image.load(join('assets','board','Board.png')).convert_alpha()
+        self.BG = pygame.transform.scale(self.BG, (WINDOW_WIDTH, WINDOW_HEIGHT))
         self.player = Player((30, WINDOW_HEIGHT / 2), self.all_sprites)
     
     def run(self):
@@ -29,7 +31,7 @@ class Game:
             self.all_sprites.update(dt)
 
             # draw
-            self.display_surface.blit(BG, (0,0))
+            self.display_surface.blit(self.BG, (0,0))
             self.all_sprites.draw(self.display_surface)
             pygame.display.flip()
 
