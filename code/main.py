@@ -1,5 +1,6 @@
 from settings import *
 from player import Player
+from ball import Ball
 
 class Game:
     def __init__(self):
@@ -16,6 +17,7 @@ class Game:
         self.BG = pygame.image.load(join('assets','board','Board.png')).convert_alpha()
         self.BG = pygame.transform.scale(self.BG, (WINDOW_WIDTH, WINDOW_HEIGHT))
         self.player = Player((30, WINDOW_HEIGHT / 2), self.all_sprites)
+        self.ball = Ball(self.all_sprites)
     
     def run(self):
         while self.running:
