@@ -16,6 +16,8 @@ class Player(pygame.sprite.Sprite):
 
     def move(self, dt):
         self.rect.center += self.direction * self.speed * dt
+        self.rect.top = 0 if self.rect.top < 0 else self.rect.top
+        self.rect.bottom = WINDOW_HEIGHT if self.rect.bottom > WINDOW_HEIGHT else self.rect.bottom
     
     def update(self, dt):
         self.input()
