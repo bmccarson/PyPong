@@ -8,7 +8,8 @@ class Player(pygame.sprite.Sprite):
 
         # movement
         self.direction = pygame.Vector2()
-        self.speed = SPEED['player'] 
+        self.speed = SPEED['player']
+        self.old_rect = self.rect.copy() 
     
     def input(self):
         keys = pygame.key.get_pressed()
@@ -20,5 +21,6 @@ class Player(pygame.sprite.Sprite):
         self.rect.bottom = WINDOW_HEIGHT if self.rect.bottom > WINDOW_HEIGHT else self.rect.bottom
     
     def update(self, dt):
+        self.old_rect = self.rect.copy()
         self.input()
         self.move(dt)
