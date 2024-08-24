@@ -1,9 +1,10 @@
 from settings import *
+from support import import_image
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, pos, groups):
         super().__init__(groups)
-        self.image = pygame.image.load(join('assets', 'players', 'Player.png')).convert_alpha()
+        self.image = import_image('assets', 'players', 'Player')
         self.rect = self.image.get_frect(center = pos)
 
         # movement

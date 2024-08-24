@@ -1,4 +1,5 @@
 from settings import *
+from support import import_image
 
 from groups import *
 
@@ -19,7 +20,7 @@ class Game:
         self.player_sprites = PlayerSprites()
 
         # sprites
-        self.BG = pygame.image.load(join('assets','board','Board.png')).convert_alpha()
+        self.BG = import_image('assets','board','Board')
         self.BG = pygame.transform.scale(self.BG, (WINDOW_WIDTH, WINDOW_HEIGHT))
         self.player = Player((30, WINDOW_HEIGHT / 2), (self.all_sprites, self.player_sprites))
         self.ball = Ball(self.all_sprites, self.player_sprites)

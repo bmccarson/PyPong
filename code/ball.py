@@ -1,10 +1,11 @@
 from settings import *
+from support import import_image
 from random import choice, uniform
 
 class Ball(pygame.sprite.Sprite):
     def __init__(self, groups, player_sprites):
         super().__init__(groups)
-        self.image = pygame.image.load(join('assets', 'ball', 'Ball.png')).convert_alpha()
+        self.image = import_image('assets', 'ball', 'Ball')
         self.rect = self.image.get_frect(center = (WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2))
         self.player_sprites = player_sprites
 
