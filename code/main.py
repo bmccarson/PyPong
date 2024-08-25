@@ -22,7 +22,7 @@ class Game:
         # sprites
         self.BG = import_image('assets','board','Board')
         self.BG = pygame.transform.scale(self.BG, (WINDOW_WIDTH, WINDOW_HEIGHT))
-        self.player = Player((30, WINDOW_HEIGHT / 2), (self.all_sprites, self.player_sprites))
+        self.player = Player((30, WINDOW_HEIGHT / 2), (self.all_sprites, self.player_sprites), import_image('assets', 'players', 'Player'))
         self.ball = Ball(self.all_sprites, self.player_sprites)
     
     def run(self):
