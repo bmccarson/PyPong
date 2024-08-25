@@ -3,7 +3,7 @@ from support import import_image
 
 from groups import *
 
-from player import Player
+from players import Player
 from ball import Ball
 
 
