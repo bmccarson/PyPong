@@ -46,7 +46,7 @@ class Ball(pygame.sprite.Sprite):
                         self.direction.x *= -1
                     if self.rect.right >= sprite.rect.left and self.old_rect.right <= sprite.old_rect.left:
                         self.rect.right = sprite.rect.left
-                        self.diretion.x *= -1
+                        self.direction.x *= -1
                 else:
                     if self.rect.bottom >= sprite.rect.top and self.old_rect.bottom <= sprite.old_rect.top:
                         self.rect.bottom = sprite.rect.top
