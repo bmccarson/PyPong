@@ -56,13 +56,10 @@ class Ball(pygame.sprite.Sprite):
                         self.direction.y *= -1
 
     def reset(self):
-        if self.rect.left <= 0:
+        if self.rect.left <= 0 or self.rect.right >= WINDOW_WIDTH:
             self.rect.center = (WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2)
             self.direction = pygame.Vector2(choice((1,-1)),uniform(0.7, 0.8) * choice((-1,1)))
-        if self.rect.right >= WINDOW_WIDTH:
-            self.rect.center = (WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2) 
-            self.direction = pygame.Vector2(choice((1,-1)),uniform(0.7, 0.8) * choice((-1,1)))
-            
+
     def update(self, dt):
         self.old_rect = self.rect.copy()
         self.move(dt)
