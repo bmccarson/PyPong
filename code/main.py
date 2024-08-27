@@ -5,6 +5,7 @@ from groups import *
 
 from players import Player, Opponent
 from ball import Ball
+from score import Score
 
 
 class Game:
@@ -29,6 +30,7 @@ class Game:
                                  (self.all_sprites, self.player_sprites),
                                  import_image('assets', 'players', 'Opponent'),
                                  self.ball)
+        self.score = Score(self.display_surface)
     
     def run(self):
         while self.running:
@@ -46,6 +48,7 @@ class Game:
             # draw
             self.display_surface.blit(self.BG, (0,0))
             self.all_sprites.draw(self.display_surface)
+            self.score.display_score()
             pygame.display.flip()
 
         pygame.quit()
