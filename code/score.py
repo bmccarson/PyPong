@@ -18,5 +18,5 @@ class Score(pygame.sprite.Sprite):
         opponent_score_rect = player_score_surf.get_frect(center = (WINDOW_WIDTH / 2 + 100, WINDOW_HEIGHT / 2))
         self.display_surface.blit(opponent_score_surf, opponent_score_rect)
     
-    def update(self, side):
+    def update_score(self,side):
         self.score['player' if side == 'player' else 'opponent'] += 1

@@ -1,18 +1,21 @@
 from settings import *
 from support import import_image
 from random import choice, uniform
+from score import Score
 
 class Ball(pygame.sprite.Sprite):
-    def __init__(self, groups, player_sprites):
+    def __init__(self, groups, player_sprites, score):
         super().__init__(groups)
         self.image = import_image('assets', 'ball', 'Ball')
         self.rect = self.image.get_frect(center = (WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2))
         self.player_sprites = player_sprites
+        self.score = score
 
         # movement
         self.direction = pygame.Vector2(choice((1,-1)),uniform(0.7, 0.8) * choice((-1,1)))
         self.speed = SPEED['ball']
         self.old_rect = self.rect.copy()
+
     
     def move(self, dt):
         self.rect.x += self.direction.x * self.speed * dt
@@ -29,13 +32,9 @@ class Ball(pygame.sprite.Sprite):
             self.rect.bottom = WINDOW_HEIGHT
             self.direction.y *= -1
         
-        if self.rect.right >= WINDOW_WIDTH:
-            self.rect.right = WINDOW_WIDTH
-            self.direction.x *= -1
-
-        if self.rect.left <= 0:
-            self.rect.left = 0
-            self.direction.x *= -1
+        if self.rect.right >= WINDOW_WIDTH or self.rect.left <= 0:
+            self.score.update_score('player' if self.rect.centerx > WINDOW_WIDTH / 2 else 'opponent')
+            self.reset()
     
     def player_collision(self, direction):
         for sprite in self.player_sprites:
@@ -64,4 +63,3 @@ class Ball(pygame.sprite.Sprite):
         self.old_rect = self.rect.copy()
         self.move(dt)
         self.wall_collision()
-        self.reset()
