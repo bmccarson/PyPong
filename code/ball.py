@@ -6,7 +6,7 @@ from score import Score
 class Ball(pygame.sprite.Sprite):
     def __init__(self, groups, player_sprites, score):
         super().__init__(groups)
-        self.image = import_image('assets', 'ball', 'Ball')
+        self.image = import_image('..','assets', 'ball', 'Ball')
         self.rect = self.image.get_frect(center = (WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2))
         self.player_sprites = player_sprites
         self.score = score

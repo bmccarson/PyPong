@@ -21,15 +21,15 @@ class Game:
         self.player_sprites = PlayerSprites()
 
         # sprites
-        BG = import_image('assets','board','Board')
+        BG = import_image('..','assets','board','Board')
         self.BG = pygame.transform.scale(BG, (WINDOW_WIDTH, WINDOW_HEIGHT))
         self.score = Score(self.display_surface)
         self.player = Player((30, WINDOW_HEIGHT / 2), (self.all_sprites, self.player_sprites),
-                             import_image('assets', 'players', 'Player'))
+                             import_image('..','assets', 'players', 'Player'))
         self.ball = Ball(self.all_sprites, self.player_sprites, self.score)
         self.opponent = Opponent((WINDOW_WIDTH - 30, WINDOW_HEIGHT /2),
                                  (self.all_sprites, self.player_sprites),
-                                 import_image('assets', 'players', 'Opponent'),
+                                 import_image('..','assets', 'players', 'Opponent'),
                                  self.ball)
 
     def run(self):
